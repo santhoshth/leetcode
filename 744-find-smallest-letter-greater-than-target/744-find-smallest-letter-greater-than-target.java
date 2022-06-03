@@ -13,12 +13,9 @@ class Solution {
                 end = mid - 1;
             } else {
                 start = mid + 1;
-                if(start == len){
-                    return letters[0];
-                }
             }           
         }
         
-        return letters[start];
+        return start == len ? letters[0] : letters[start];
     }
 }
