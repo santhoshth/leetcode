@@ -37,7 +37,7 @@ class Solution {
             if(arr[start] >= arr[mid]){
                 end = mid - 1;
             } else {
-                start = mid;
+                start = mid +1;
             }
         }
 
