@@ -37,10 +37,8 @@ class Solution {
         return start;
     }
     
-    public int searchAsc(MountainArray arr, int n, int s, int e){
-        int start = s;
-        int end = e;
-        
+    public int searchAsc(MountainArray arr, int n, int start, int end){
+                
         while(start <= end){
             int mid = start + (end - start) / 2;
             
@@ -57,10 +55,8 @@ class Solution {
         return -1;
     }
     
-    public int searchDsc(MountainArray arr, int n, int s, int e){
-        int start = s;
-        int end = e;
-        
+    public int searchDsc(MountainArray arr, int n, int start, int end){
+    
         while(start <= end){
             int mid = start + (end - start) / 2;
             
