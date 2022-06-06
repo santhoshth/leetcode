@@ -6,8 +6,9 @@ class Solution {
         for(int i = 0; i < arr1.length; i++){
             boolean valid = true;
             for(int j = 0; j < arr2.length; j++){
-                int temp = Math.abs(arr1[i] - arr2[j]);
-                if(temp <= d){
+                int sub = arr1[i] - arr2[j];
+                int value = Math.abs(sub);
+                if(value <= d){
                     valid = false;
                     break;
                 }   
