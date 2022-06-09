@@ -1,46 +1,66 @@
 class Solution {
-public int[] searchRange(int[] nums, int target) {
-        
-        int index = search(nums, target);
-        if(index == -1){
-            return new int[]{-1,-1};
+    public int[] searchRange(int[] nums, int target) {
+        int start = -1;
+        int end = -1;
+
+        if(nums.length > 0 && search(nums, target)){
+            start = ceil(nums, target-1);
+            end = floor(nums, target+1);
         }
-        
-        int start = index;
-        int end = index;
-                
-        while(start > 0 && nums[start - 1] == target){
-            start = start - 1;
-        }
-        
-        while(end < nums.length - 1 && nums[end + 1] == target){
-            end = end + 1;
-        }
-        
+
         return new int[]{start, end};
-        
     }
     
-    public int search(int[] nums, int target){
-        int length = nums.length;
-        int start = 0;
-        int end = length - 1;
-        
-        while(start <= end){
-            
-            int mid = start + (end - start) / 2;
-            
+    public boolean search(int[] nums, int target){
+        int s = 0;
+        int e = nums.length - 1;
+
+        while(s <= e){
+            int mid = s + (e - s) / 2;
+
             if(nums[mid] == target){
-                return mid;
+                return true;
             }
-            
+
             if(nums[mid] > target){
-                end = mid - 1;
+                e = mid - 1;
             } else {
-                start = mid + 1;
-            }            
+                s = mid + 1;
+            }
         }
-        
-          return -1;
+        return false;
     }
-}
+
+    public int ceil(int[] nums, int target){
+        int s = 0;
+        int e = nums.length - 1;
+
+        while(s <= e){
+            int mid = s + (e - s) / 2;
+
+            if(nums[mid] > target){
+                e = mid - 1;
+            } else {
+                s = mid + 1;
+            }
+        }
+        return s;
+    }
+
+    public int floor(int[] nums, int target){
+        int s = 0;
+        int e = nums.length - 1;
+
+        while(s <= e){
+            int mid = s + (e - s) / 2;
+
+            if(nums[mid] < target){
+                s = mid + 1;
+            } else {
+                e = mid - 1;
+            }
+        }
+
+        return e;
+    }
+}   
