@@ -3,11 +3,12 @@ class Solution {
         int count = 0;
 
         for (int i = 0; i < grid.length; i++) {
-            int index = 0;
+            int negativeStartingPosition = 0;
+            // if complete array is not less than 0 then search for negative starting position
             if(grid[i].length > 0 && grid[i][0] >= 0){
-                index = search(grid[i]);
+                negativeStartingPosition = search(grid[i]);
             }
-            count += grid[i].length - index;
+            count += grid[i].length - negativeStartingPosition;
         }
 
         return count;
@@ -21,6 +22,7 @@ class Solution {
             int m = s + (e-s)/2;
 
             if(nums[m] == 0){
+                // to skip the duplicate zeros
                 while(m < nums.length-1 && nums[m+1] == 0){
                     m += 1;
                 }
