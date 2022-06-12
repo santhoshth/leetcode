@@ -4,43 +4,44 @@ class Solution {
     }
     
     public boolean checkSudoku(char[][] grid, int row, int col){
-        // for (int i = 0; i < grid.length; i++) {
-        //     for (int j = 0; j < grid[i].length; j++) {
-        //         if(grid[i][j] != '.' && !isValid(grid, grid[i][j], i, j)){
-        //             return false;
-        //         }
-        //     }
-        // }
-        // return true;
-        
-        if(col == grid.length){
-            col = 0;
-            row++;
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                char c = grid[i][j];
+                if(c != '.' && !isValid(grid, c, i, j)){
+                    return false;
+                }
+            }
         }
+        return true;
         
-        if(row == grid.length){
-            return true;
-        }
+//         if(col == grid.length){
+//             col = 0;
+//             row++;
+//         }
         
-        char temp = grid[row][col];
+//         if(row == grid.length){
+//             return true;
+//         }
         
-        if(temp != '.' && !isValid(grid, temp, row, col)){
-            return false;
-        }
+//         char temp = grid[row][col];
         
-        return checkSudoku(grid, row, col+1);
+//         if(temp != '.' && !isValid(grid, temp, row, col)){
+//             return false;
+//         }
+        
+//         return checkSudoku(grid, row, col+1);
     }
     
     public static boolean isValid(char[][] grid, char n, int r, int c){
         // row check
-        for (int i = 0; i < grid.length; i++) {
+        for (int i = 0; i < 9; i++) {
             if (i != r && grid[i][c] == n) {
                 return false;
             }
         }
 
         // col check
-        for (int i = 0; i < grid.length; i++) {
+        for (int i = 0; i < 9; i++) {
             if(i != c && grid[r][i] == n){
                 return false;
             }
