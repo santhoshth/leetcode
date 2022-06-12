@@ -1,30 +1,43 @@
 class Solution {
+    
     public void solveSudoku(char[][] grid) {
+        sudoku(grid, 0, 0);
+    }
+        
+    public static boolean sudoku(char[][] grid, int row, int col){
+       
         // get 1st empty cell
         // if no empty cell then solution is found
-        int[] cell = emptyCell(grid);
-        int row = cell[0];
-        int col = cell[1];
-        if(row == -1 && col == -1){
-            return;
+        if(col == grid.length){
+            col = 0;
+            row++;
+        }
+
+        if(row == grid.length){
+            return true;
+        }
+
+        if(grid[row][col] != '.'){
+            return sudoku(grid, row, col+1);  
         }
 
         //check and place 1 to 9 using for loop
         // then call again using updated grid
         for (int i = 1; i < 10; i++) {
-            String c = i+"";
-            if(isValid(grid, c.charAt(0), row, col)){
-                grid[row][col] = c.charAt(0);
-                solveSudoku(grid);
-                if(isEmpty(grid)){
-                   return; 
-                }else {                    
-                grid[row][col] = '.';
+            char c = (char)(i+'0');
+            if(isValid(grid, c, row, col)){
+                grid[row][col] = c;
+                                
+                if(sudoku(grid, row, col+1)){
+                    return true;
+                } else {
+                    grid[row][col] = '.';
                 }
             }
-        } 
+        }
+        return false;
     }
-        
+
     public static boolean isValid(char[][] grid, char n, int r, int c){
         // row check
         for (char[] row : grid) {
@@ -52,34 +65,7 @@ class Solution {
                 }
             }
         }
-        return true;
-    }
 
-    public static int[] emptyCell(char[][] grid){
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
-                if(grid[i][j] == '.'){
-                    return new int[]{i,j};
-                }
-            }
-        }
-        return new int[]{-1,-1};
-    }
-    
-    public static boolean isEmpty(char[][] grid){
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
-                if(grid[i][j] == '.'){
-                    return false;
-                }
-            }
-        }
         return true;
-    }
-    
-    public static void display(char[][] grid){
-        for (char[] row : grid) {
-            System.out.println(Arrays.toString(row));
-        }
     }
 }
