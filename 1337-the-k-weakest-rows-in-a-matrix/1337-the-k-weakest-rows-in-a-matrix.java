@@ -6,9 +6,9 @@ class Solution {
             soldiers[i] = ceil(mat[i]);
         }
 
-        if(k > mat.length){
-            k = mat.length;
-        }
+        // if(k > mat.length){
+        //     k = mat.length;
+        // }
 
         int[] weakOrder = new int[k];
         for (int i = 0; i < k; i++) {
