@@ -42,25 +42,25 @@ class Solution {
         
         boolean good = valid(one) && valid(two);
         
-        if(good && one.val <= two.val){
+        if((good && one.val <= two.val) || (!good && one != null)){
             result.next = one;
             one = one.next;
         }
         
-        else if(good && one.val > two.val){
+        else if((good && one.val > two.val) || (!good && two != null)){
             result.next = two;
             two = two.next;            
         }
         
-        if(!good && one != null){
-            result.next = one;
-            one = one.next;
-        }
+        // if(!good && one != null){
+        //     result.next = one;
+        //     one = one.next;
+        // }
         
-        if(!good && two != null){
-            result.next = two;
-            two = two.next;    
-        }
+        // if(!good && two != null){
+        //     result.next = two;
+        //     two = two.next;    
+        // }
         
         result.next = merge(one, two, result.next);
         
