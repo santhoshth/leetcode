@@ -14,7 +14,6 @@ class Solution {
             return head;
         }
         
-        
         while(head.next != null && head.val == head.next.val){
             head.next = head.next.next;
         }
