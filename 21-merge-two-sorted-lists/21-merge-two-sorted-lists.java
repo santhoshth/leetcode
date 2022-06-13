@@ -26,11 +26,11 @@ class Solution {
         ListNode result = list1.val <= list2.val ? list1 : list2;
         
         if(list1.val <= list2.val)
-            result = merge(list1.next,list2, result);
+            list1 = list1.next;
         else
-            result = merge(list1,list2.next, result);
+            list2 = list2.next;
         
-        
+        result = merge(list1,list2, result);
         
         return result;
     }
