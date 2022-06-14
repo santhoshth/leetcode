@@ -1,29 +1,19 @@
 class Solution {
     public int maxDistance(int[] nums1, int[] nums2) {
-        int max = 0;
-        for(int i = 0; i < nums1.length; i++){
-            int j = ceil(nums2, nums1[i])-1;
-            if(i <= j && j-i > max){
-                max = j-i;
-            }  
-        }
-        
-        return max;
-    }
-    
-    public int ceil(int[] arr, int n){
-        int start = 0;
-        int end = arr.length-1;
-        
-        while(start <= end){
-            int mid = start + (end - start)/2;
-            
-            if(arr[mid] >= n){
-                start = mid + 1;
-            } else {
-                end = mid - 1;
+        int i=0,j=0,max=0;
+        while (j < nums2.length)
+        {
+            if (i < nums1.length && nums2[j] >= nums1[i])
+            {
+                max=Math.max(max,j-i);
+                j++;
+            }
+            else
+            {
+                i++;
+                j++;
             }
         }
-        return start;
+        return max;
     }
 }
