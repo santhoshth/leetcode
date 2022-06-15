@@ -23,26 +23,13 @@ class Solution {
             return carry == 1 ? new ListNode(carry) : i;
         }
         
-        // Value is calculated by sum of 3 values
-        // i.val + j.val + carry        
-        int val = 0;
+        int iValue = i != null ? i.val : 0;
+        int jValue = j != null ? j.val : 0;
         
-        // when any one node is null, skip the null node
-        if(i == null && j != null){
-            val = j.val + carry;
-        }
-        
-        if(i != null && j == null){
-            val = i.val + carry;
-        }
-        
-        // when both node are valid, add both the values
-        if( i != null && j != null){            
-            val = (i.val + j.val + carry);
-        }
+        int sum = iValue + jValue + carry;
         
         // creating a node with calculated value
-        ListNode res = new ListNode(val % 10);
+        ListNode res = new ListNode(sum % 10);
         
         // when both the list have different length
         // once the shortest list is completed, it can be passed as null
@@ -50,7 +37,7 @@ class Solution {
         ListNode iNext = i != null ? i.next : null;
         ListNode jNext = j != null ? j.next : null;
         
-        carry = val > 9 ? 1 : 0;
+        carry = sum > 9 ? 1 : 0;
     
         res.next = add(iNext, jNext, carry);
               
