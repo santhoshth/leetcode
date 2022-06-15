@@ -10,9 +10,7 @@
  */
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {                
-        ListNode res = add(l1, l2, 0);
-        
-        return res;
+        return add(l1, l2, 0);
     }
     
     public ListNode add(ListNode i, ListNode j, int carry){
