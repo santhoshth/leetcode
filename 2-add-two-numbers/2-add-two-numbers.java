@@ -18,7 +18,8 @@ class Solution {
         // if carry is 0 return null else return the carry value as node
         
         if(i == null && j == null){
-            return carry == 1 ? new ListNode(carry) : i;
+            if(carry == 0) return null;
+            else return new ListNode(carry);
         }
         
         int iValue = i != null ? i.val : 0;
@@ -35,7 +36,7 @@ class Solution {
         ListNode iNext = i != null ? i.next : null;
         ListNode jNext = j != null ? j.next : null;
         
-        carry = sum > 9 ? 1 : 0;
+        carry = sum/10;
     
         res.next = add(iNext, jNext, carry);
               
