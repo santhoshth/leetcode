@@ -35,10 +35,8 @@ class Solution {
         // then val will be calculated based on remaining nodes of longest list        
         ListNode iNext = i != null ? i.next : null;
         ListNode jNext = j != null ? j.next : null;
-        
-        carry = sum/10;
-    
-        res.next = add(iNext, jNext, carry);
+            
+        res.next = add(iNext, jNext, sum/10);
               
         return res;
     }
