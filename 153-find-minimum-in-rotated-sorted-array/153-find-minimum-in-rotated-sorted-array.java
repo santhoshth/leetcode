@@ -7,6 +7,7 @@ class Solution {
         if(nums.length > 1 && nums[0] < nums[nums.length-1]){
             return nums[0];
         }
+        
         int start = 0;
         int end = nums.length-1;
         
@@ -28,6 +29,6 @@ class Solution {
             }
         }
         
-        return nums[start+1];
+        return -1;
     }
 }
