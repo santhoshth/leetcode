@@ -30,11 +30,9 @@ class Solution {
         // when any one node is null, skip the null node
         if(i == null && j != null){
             val = j.val + carry;
-        }
-        
-        if(i != null && j == null){
+        } else if(i != null && j == null){
             val = i.val + carry;
-        }
+        } else 
         
         // when both node are valid, add both the values
         if( i != null && j != null){            
