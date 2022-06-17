@@ -19,9 +19,7 @@ class Solution {
     }
     
     public int balanced(TreeNode root){
-        if(root == null){
-            return 0;
-        }
+        if(root == null) return 0;
         
         int lh = balanced(root.left);
         if(lh == -1) return -1;
