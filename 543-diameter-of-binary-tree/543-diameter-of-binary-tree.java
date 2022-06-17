@@ -30,7 +30,9 @@ class Solution {
         int lH = diameter(root.left);
         int rH = diameter(root.right);
         
-        max = Math.max(max, lH + rH);
+        int path = lH + rH;
+        if(path > max) max = path;
+        // max = Math.max(max, lH + rH);
         
         return Math.max(lH, rH) + 1;
     }
