@@ -38,7 +38,8 @@ public class Codec {
         Queue<TreeNode> q = new LinkedList<>();
         q.offer(root);
 
-        for (int i = 1; i < data.length; i++) {
+        int i = 1;
+        while(!q.isEmpty()) {
             TreeNode parent = q.poll();
             if(!data[i].equals("n")){
                 parent.left = new TreeNode(Integer.parseInt(data[i]));
@@ -49,6 +50,7 @@ public class Codec {
                 parent.right = new TreeNode(Integer.parseInt(data[i]));
                 q.offer(parent.right);
             }
+            i++;
         }
 
         return root;
