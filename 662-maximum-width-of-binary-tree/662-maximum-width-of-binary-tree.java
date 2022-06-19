@@ -39,9 +39,9 @@ class Solution {
                 TreeNode node = temp.node;
                 int num = temp.num;
                 if (node.left != null)
-                    queue.offer(new Pair(node.left, 2 * num + 1 - sub));
+                    queue.offer(new Pair(node.left, 2 * num ));
                 if (node.right != null)
-                    queue.offer(new Pair(node.right, 2 * num + 2 - sub));
+                    queue.offer(new Pair(node.right, 2 * num + 1));
                 subList.add(queue.poll());
             }
             int width = subList.get(subList.size()-1).num - subList.get(0).num + 1;
