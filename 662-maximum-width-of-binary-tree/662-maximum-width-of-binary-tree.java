@@ -29,15 +29,20 @@ class Solution {
         queue.offer(new Pair(root, 0));
 
         int sub = 1;
+        int ans = 0;
         int maxWidth = 0;
 
         while (!queue.isEmpty()){
             int length = queue.size();
             ArrayList<Pair> subList = new ArrayList<>();
+            int first = 0;
+            int last = 0;
             for (int i = 0; i < length; i++) {
                 Pair temp = queue.peek();
                 TreeNode node = temp.node;
                 int num = temp.num;
+                if(i == 0) first = temp.num;
+                if(i == length-1) last = temp.num;
                 if (node.left != null)
                     queue.offer(new Pair(node.left, 2 * num ));
                 if (node.right != null)
@@ -46,7 +51,9 @@ class Solution {
             }
             int width = subList.get(subList.size()-1).num - subList.get(0).num + 1;
             if( width > maxWidth) maxWidth = width;
+            
+            ans = Math.max(ans, last-first+1);
         }
-        return maxWidth;
+        return ans;
     }
 }
