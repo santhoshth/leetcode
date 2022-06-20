@@ -19,10 +19,10 @@ class Solution {
     }
     
     public TreeNode toLinkedList(TreeNode root){
-    if(root == null){
+        if(root == null){
             return null;
         }
-
+        
         TreeNode left = toLinkedList(root.left);
         TreeNode right = toLinkedList(root.right);
 
