@@ -3,9 +3,9 @@ class Solution {
         
         quickSort(nums, 0, nums.length-1);
         
-        if(k <= nums.length) return nums[k-1];
+        // if(k <= nums.length) return ;
         
-        return -1;
+        return nums[k-1];
     }
     
     public void quickSort(int[] arr, int low, int high){
