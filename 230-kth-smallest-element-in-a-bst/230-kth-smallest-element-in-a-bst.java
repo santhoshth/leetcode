@@ -15,6 +15,12 @@
  */
 class Solution {
     public int kthSmallest(TreeNode root, int k) {
+               
+        return inorder(root, k);
+    }
+    
+    public int inorder(TreeNode root, int k){
+        
         Stack<TreeNode> stack = new Stack<>();
         
         int count = 0;
