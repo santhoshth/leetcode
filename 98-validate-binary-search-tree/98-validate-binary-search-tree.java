@@ -21,8 +21,7 @@ class Solution {
     public boolean checkBST(TreeNode root, long min, long max){
         if(root == null) return true;
         
-        if(!(root.val > min)) return false;
-        if(!(root.val < max)) return false;
+        if(root.val >= max || root.val <= min) return false;
         
         return checkBST(root.left, min, root.val) && checkBST(root.right, root.val, max);
         
