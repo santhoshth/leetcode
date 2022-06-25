@@ -1,9 +1,7 @@
 class Solution {
     public int findKthLargest(int[] nums, int k) {
-        
+        // descending sort
         quickSort(nums, 0, nums.length-1);
-        
-        // if(k <= nums.length) return ;
         
         return nums[k-1];
     }
@@ -36,6 +34,7 @@ class Solution {
                 end--;
             }
         }
+        
         quickSort(arr, low, end);
         quickSort(arr, start, high);
     }
