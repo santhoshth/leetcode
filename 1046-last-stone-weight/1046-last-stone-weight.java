@@ -9,10 +9,10 @@ class Solution {
             int first = maxHeap.poll();
             int second = maxHeap.poll();
             int difference =  first - second;
-            maxHeap.offer(difference);
+            if(difference != 0) maxHeap.offer(difference);
         }
             
-        return maxHeap.size() == 0 ? 0 : maxHeap.peek();
+        return maxHeap.size() == 0 ? 0 : maxHeap.poll();
             
     }
 }
