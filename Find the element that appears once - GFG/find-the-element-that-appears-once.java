@@ -33,16 +33,35 @@ class Sol
     public static int search(int A[], int N)
     {
         // your code here
-        HashMap<Integer, Integer> map = new HashMap<>();
+        int start = 0;
+        int end = N-1;
         
-        for(int each: A){
-            map.put(each, map.getOrDefault(each, 0) + 1);
-        }
-        
-        for(HashMap.Entry<Integer, Integer> m : map.entrySet()){
-            if(m.getValue() == 1) return m.getKey();
+        while(start <= end){
+            int mid = start + (end - start)/2;
+            
+            if(mid % 2 != 0){
+                if(mid > 0 && A[mid] == A[mid-1]){
+                    start = mid + 1;
+                } else if(mid < N-1 && A[mid] == A[mid+1]){
+                    end = mid - 1;
+                }else{
+                    return A[mid];
+                }
+            }
+            
+            if(mid%2 == 0){
+                if(mid > 0 && A[mid] == A[mid-1]){
+                    end = mid - 1;
+                } else if(mid < N-1 && A[mid] == A[mid+1]){
+                    start = mid + 1;
+                }else{
+                    return A[mid];
+                }
+            }
+            
         }
         
         return -1;
+        
     }
 }
