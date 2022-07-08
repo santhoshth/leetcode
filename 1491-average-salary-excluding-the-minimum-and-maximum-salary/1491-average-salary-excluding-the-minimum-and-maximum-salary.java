@@ -12,6 +12,6 @@ class Solution {
         }
         
                
-        return (double)((sum-min-max)/(salary.length - 2));
+        return ((sum-min-max)/(salary.length - 2));
     }
 }
