@@ -23,8 +23,10 @@ class Solution {
             return null;
         }
         
+        // pointing the result node to minimum of list1 and list2
         ListNode result = list1.val <= list2.val ? list1 : list2;
         
+        // incrementing the minimum of list1 and list2
         if(list1.val <= list2.val)
             list1 = list1.next;
         else
@@ -36,31 +38,37 @@ class Solution {
     }
     
     public ListNode merge(ListNode one, ListNode two, ListNode result){
+        // break condition
         if(result == null){
             return result;
         }
         
         boolean good = valid(one) && valid(two);
         
-        if((good && one.val <= two.val) || (!good && one != null)){
+        // 2 conditions when one and two nodes are valid
+        // compare values of one and two
+        if(good && one.val <= two.val){
             result.next = one;
             one = one.next;
         }
         
-        else if((good && one.val > two.val) || (!good && two != null)){
+        else if(good && one.val > two.val){
             result.next = two;
             two = two.next;            
         }
         
-        // if(!good && one != null){
-        //     result.next = one;
-        //     one = one.next;
-        // }
+         // 2 conditions when one or two nodes are null
+        // when two is null, copy the nodes of one
+        if(!good && one != null){
+            result.next = one;
+            one = one.next;
+        }
         
-        // if(!good && two != null){
-        //     result.next = two;
-        //     two = two.next;    
-        // }
+        // when one is null, copy the nodes of two
+        if(!good && two != null){
+            result.next = two;
+            two = two.next;    
+        }
         
         result.next = merge(one, two, result.next);
         
